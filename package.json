@@ -13,7 +13,8 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
     "react-native-fcm": "^6.2.3",
-    "react-native-firebase-auth": "0.0.11"
+    "react-native-firebase-auth": "0.0.11",
+    "react-native-multiselect": "^3.0.1"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

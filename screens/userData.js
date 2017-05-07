@@ -42,31 +42,31 @@ export default class UserData extends Component {
   render() {
     return (
     <Container>
-                  <Header>
+                  <Header androidStatusBarColor="#141829" style={{ backgroundColor: '#141829'}} >
                     <Body>
                         <Title>Dane samochodu</Title>
                     </Body>
                   </Header>
     <View style={styles.content}>
     <View style={styles.container}>
-          <Text>Nr rejestracyjny:</Text>
+          <Text style={{color: '#fff'}}>Nr rejestracyjny:</Text>
           <TextInput
             style={styles.form}
             onChangeText={(nr) => this.setState({nr})}
             value={this.state.nr} />
-          <Text>Kolor:</Text>
+          <Text style={{color: '#fff'}}>Kolor:</Text>
           <TextInput
             style={styles.form}
             onChangeText={(color) => this.setState({color})}
             value={this.state.color}
           />
-          <Text>Marka:</Text>
+          <Text style={{color: '#fff'}}>Marka:</Text>
           <TextInput
             style={styles.form}
             onChangeText={(model) => this.setState({model})}
             value={this.state.model}
           />
-          <Button iconLeft onPress={this.onSave} >
+          <Button iconLeft onPress={this.onSave} style={{backgroundColor: '#21294C'}} >
               <Icon name='checkmark' />
               <Text>Zapisz</Text>
             </Button>
@@ -81,19 +81,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#141829',
   },
   container: {
     width: 300,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#141829',
   },
   form: {
     width: 300,
     height: 40,
-    marginBottom: 10,
+    marginBottom: 20,
+    color: '#fff',
+    borderColor: '#fff',
+    backgroundColor: '#21294C'
   },
   buttons: {
     width: 300,

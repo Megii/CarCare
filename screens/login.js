@@ -13,9 +13,6 @@ import {
 
 import { Header,Container,Title, Form, Item, Label, Content, List, ListItem, Left, Right, Body, InputGroup, Icon, Text, Picker, Button } from 'native-base';
 
-import PushController from "../utils/PushController";
-import firebaseClient from  "../utils/FirebaseClient";
-
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -95,14 +92,12 @@ export default class Login extends Component {
       </View> :
         this.state.content ? this.state.content :
       <View style={styles.container}>
-      <PushController
-          onChangeToken={token => this.setState({token: token || ""})}/>
-          <Text>Email:</Text>
+          <Text style={{color: '#fff'}}>Email:</Text>
           <TextInput
             style={styles.form}
             onChangeText={(email) => this.setState({email})}
             value={this.state.email} />
-          <Text>Hasło:</Text>
+          <Text style={{color: '#fff'}}>Hasło:</Text>
           <TextInput
             style={styles.form}
             onChangeText={(pass) => this.setState({pass})}
@@ -114,6 +109,7 @@ export default class Login extends Component {
               iconLeft
               onPress={this.onLogin}
               marginHorizontal={10}
+              style={{backgroundColor: '#21294C'}}
             >
               <Icon name='key' />
               <Text>Logowanie</Text>
@@ -122,6 +118,7 @@ export default class Login extends Component {
               iconLeft
               onPress={this.onRegister}
               marginHorizontal={10}
+              style={{backgroundColor: '#21294C'}}
               >
               <Icon name='person-add' />
               <Text>Rejestracja</Text>
@@ -130,7 +127,7 @@ export default class Login extends Component {
       </View>;
 
       return (<Container>
-                            <Header>
+                            <Header androidStatusBarColor="#141829" style={{ backgroundColor: '#141829'}} >
                                 <Body>
                                     <Title>Logowanie</Title>
                                 </Body>
@@ -147,25 +144,28 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#141829',
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#141829',
   },
   container: {
     width: 300,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#141829',
   },
   form: {
     width: 300,
     height: 40,
-    marginBottom: 10,
+    marginBottom: 20,
+    color: '#fff',
+    borderColor: '#fff',
+    backgroundColor: '#21294C'
   },
   buttons: {
     width: 300,
