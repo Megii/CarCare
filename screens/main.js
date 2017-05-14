@@ -12,6 +12,8 @@ import {
   Text,
   Image,
   TouchableWithoutFeedback,
+  ListView,
+  ToastAndroid,
 } from 'react-native';
 
 import { Header,Container,Title, Form, Item, Label, Content, Body, ListItem, Left, Right, InputGroup, Icon, Picker, Button, CheckBox } from 'native-base';
@@ -19,25 +21,40 @@ import { Header,Container,Title, Form, Item, Label, Content, Body, ListItem, Lef
 import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
 
 
+const alerts = {
+  LIGHTS: 'Awiaria oświetlenia',
+  OIL: 'Wyciek płynów',
+  TIRE: 'Awaria układu jezdnego',
+  EXHAUST: 'Awaria układu wydechowego',
+  ACCIDENT: 'Wypadek',
+};
+
 export default class Main extends Component {
   constructor(props) {
     super(props);
+
+    this.onBtnPress = this.onBtnPress.bind(this);
+    this.onNewRecord = this.onNewRecord.bind(this);
+    this._onPressItem = this._onPressItem.bind(this);
+    this.renderRow = this.renderRow.bind(this);
+    this.renderItems = this.renderItems.bind(this);
+
+    let dataSource = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+      sectionHeaderHasChanged: (s1, s2) => s1 !== s2
+    });
+
     this.state = {
       users: null,
-      usersArray: [],
+      usersArray: null,
       token: null,
       id: null,
       coords: {
         lon: 0,
         lat: 0,
       },
+      dataSource: dataSource.cloneWithRowsAndSections([]),
     };
-
-    this.onSelectUser = this.onSelectUser.bind(this);
-    this.onBtnPress = this.onBtnPress.bind(this);
-    this.onNewRecord = this.onNewRecord.bind(this);
-    this._renderItem = this._renderItem.bind(this);
-    this._onPressItem = this._onPressItem.bind(this);
   }
 
   componentDidMount() {
@@ -78,9 +95,8 @@ export default class Main extends Component {
       {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
     );
 
-    const usersRef = this.props.fb.database().ref('/users');
+    const usersRef = this.props.fb.database().ref(`/users/${userId}/nearby`);
         usersRef.on('value', function(element) {
-          // this.updateUserList(element.val());
           let tempUsers = element.val()
           let usersArray = [];
           _.forEach(element.val(), (val, key) => {
@@ -88,8 +104,8 @@ export default class Main extends Component {
             tempUsers[key].id = key;
             usersArray.push(tempUsers[key]);
           });
-          this.setState({users: tempUsers, usersArray: usersArray});
-          console.log(this.state.users);
+          this.setState({users: tempUsers});
+          this.renderItems(usersArray);
         }.bind(this));
 
         // usersRef.once('value').then(function(snapshot) {
@@ -146,59 +162,101 @@ export default class Main extends Component {
     navigator.geolocation.stopObserving();
   }
 
-  // updateUserList(a, b) {
-  //   console.log(a, b);
-  // }
-  //
-
-  onSelectUser(user) {
-    _.forEach(this.state.users, (val, key) => {
-      let index  = this.state.users[key].nr == user.nr ? key : false;
-
-      if(index) {
-        let tempUsers = this.state.users;
-        tempUsers[index].checked = !tempUsers[index].checked;
-        this.setState({ users: tempUsers });
-      }
-
-      console.log(this.state.users);
-    });
-  }
-
   onBtnPress(msg) {
     let to = [];
+    let hasChecked = false;
+    let usersArray = this.state.usersArray;
 
-    for(x in this.state.users) {
-      if(this.state.users[x].token && this.state.users[x].token != this.state.token) {
-        to.push(this.state.users[x].token);
+    for(u in usersArray) {
+      if(usersArray[u].checked) {
+        hasChecked = true;
       }
     }
 
-    this.props.fb.database().ref(`messages/${new Date().getTime()}`).set({
-      from: this.props.fb.auth().currentUser.uid,
-      msg: msg,
-      to : to,
-    });
+    for(x in usersArray) {
+      if(msg == alerts.ACCIDENT && !hasChecked) {
+        if(usersArray[x].token && usersArray[x].token != this.state.token) {
+          to.push(usersArray[x].token);
+        }
+      } else {
+        if(usersArray[x].token && usersArray[x].token != this.state.token && usersArray[x].checked) {
+          to.push(usersArray[x].token);
+        }
+      }
+    }
+
+    if(to.length > 0) {
+      this.props.fb.database().ref(`messages/${new Date().getTime()}`).set({
+        from: this.props.fb.auth().currentUser.uid,
+        msg: msg,
+        to : to,
+      });
+      ToastAndroid.show(`Wysłano komunikat: ${msg}`, ToastAndroid.SHORT);
+    } else {
+      ToastAndroid.show('Zaznacz osoby aby wysłać komunikat', ToastAndroid.SHORT);
+    }
+
+    for(let x = 0; x < usersArray.length; x++) {
+        usersArray[x] = {
+          id: usersArray[x].id,
+          name: usersArray[x].name,
+          color: usersArray[x].color,
+          model: usersArray[x].model,
+          token: usersArray[x].token,
+          nr: usersArray[x].nr,
+          checked: false,
+          coords: usersArray[x].coords || null,
+        };
+    }
+
+    this.renderItems(usersArray);
   }
 
   onNewRecord() {
     alert('Nowe nagranie głosowe');
   }
 
-  _renderItem(item, index){
-    return <Text>{item.nr}</Text>;
-  }
-
   _onPressItem(item) {
-    console.log(item);
     let tempUsers = this.state.usersArray;
     for(let x = 0; x < tempUsers.length; x++) {
       if(tempUsers[x].id == item.id) {
-        tempUsers[x].checked = !tempUsers[x].checked;
+        tempUsers[x] = {
+          id: tempUsers[x].id,
+          name: tempUsers[x].name,
+          color: tempUsers[x].color,
+          model: tempUsers[x].model,
+          token: tempUsers[x].token,
+          nr: tempUsers[x].nr,
+          checked: !tempUsers[x].checked,
+          coords: tempUsers[x].coords || null,
+        };
       }
     }
 
-    this.setState({usersArray: tempUsers});
+    this.renderItems(tempUsers);
+  }
+
+  renderRow(item) {
+
+    return (<TouchableWithoutFeedback onPress={() => this._onPressItem(item)}>
+                    <View style={{flexDirection: 'row'}}>
+                    <View width={90}>
+                      <Text style={styles.listItem}>{item.nr}</Text>
+                    </View>
+                    <View style={styles.colors} backgroundColor={item.color}></View><Text style={styles.listItem}> {item.model}</Text>
+                    <Right>
+                    <View style={styles.checkmark} >{ item.checked ? <Icon style={{color: '#fff'}} name="md-checkbox-outline" /> : <Icon style={{color: '#fff'}} name="md-square-outline" />  }</View>
+                    </Right>
+                    </View>
+                  </TouchableWithoutFeedback>);
+  }
+
+  renderItems(items) {
+    let newArray = items.slice();
+    this.setState({
+      usersArray: items,
+      dataSource: this.state.dataSource.cloneWithRows(newArray),
+    });
   }
 
   render() {
@@ -213,41 +271,32 @@ export default class Main extends Component {
     <View style={styles.container}>
           <View style={styles.half}>
             <Content>
-                                <FlatList
+              <ListView
                 style={styles.list}
-                data={this.state.usersArray}
-                renderItem={({ item }) => (
-                  <TouchableWithoutFeedback onPress={() => this._onPressItem(item)}>
-                    <View style={{flexDirection: 'row'}}>
-                    <View width={90}>
-                      <Text style={styles.listItem}>{item.nr}</Text>
-                    </View>
-                    <View style={styles.colors} backgroundColor={item.color}></View><Text style={styles.listItem}> {item.model} {`${item.checked}`}</Text>
-                    </View>
-                  </TouchableWithoutFeedback>
-                )}
-                keyExtractor={item => item.nr}
+                dataSource={this.state.dataSource}
+                renderRow={this.renderRow}
+                enableEmptySections={true}
               />
             </Content>
           </View>
           <View style={styles.half}>
           <View style={styles.buttons}>
-            <Button rounded large onPress={() => this.onBtnPress('Awiaria oświetlenia')}
+            <Button rounded large onPress={() => this.onBtnPress(alerts.LIGHTS)}
                 style={{backgroundColor: '#21294C', width: 100, height: 100}}>
               <Image source={require('../img/light.png')} style={{width: 48, height: 48}} />
             </Button>
-            <Button rounded large onPress={() => this.onBtnPress('Wyciek płynów')} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
+            <Button rounded large onPress={() => this.onBtnPress(alerts.OIL)} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
               <Image source={require('../img/oil.png')} style={{width: 48, height: 48}} />
             </Button>
-            <Button rounded large onPress={() => this.onBtnPress('Awaria układu jezdnego')} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
+            <Button rounded large onPress={() => this.onBtnPress(alerts.TIRE)} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
               <Image source={require('../img/tire.png')} style={{width: 48, height: 48}} />
             </Button>
           </View>
           <View style={styles.buttons}>
-            <Button rounded large onPress={() => this.onBtnPress('Awaria układu wydechowego')} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
+            <Button rounded large onPress={() => this.onBtnPress(alerts.EXHAUST)} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
               <Image source={require('../img/exhaust.png')} style={{width: 48, height: 48}} />
             </Button>
-            <Button rounded large onPress={() => this.onBtnPress('Wypadek')} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
+            <Button rounded large onPress={() => this.onBtnPress(alerts.ACCIDENT)} style={{backgroundColor: '#21294C', width: 100, height: 100}}>
               <Image source={require('../img/accident.png')} style={{width: 48, height: 48}} />
             </Button>
             <Button rounded danger large onPress={() => this.onNewRecord()} style={{backgroundColor: '#830505', width: 100, height: 100}}>
@@ -290,5 +339,8 @@ const styles = StyleSheet.create({
     marginTop: 6,
     marginRight: 4,
     backgroundColor: '#f00',
+  },
+  checkmark: {
+    marginRight: 5,
   }
 });

@@ -8,27 +8,45 @@ import {
   AsyncStorage,
   Input,
 } from 'react-native';
-
 import { ColorPicker, fromHsv, toHsv } from 'react-native-color-picker';
 
 import { Header,Container,Title, Form, Item, Label, Content, List, ListItem, Left, Right, Body, InputGroup, Icon, Text, Picker, Button } from 'native-base';
 
-export default class UserData extends Component {
+export default class UpdateUserData extends Component {
   constructor(props) {
     super(props);
     this.state = {
       nav: this.props.nav,
       nr: '',
-      color: '#000',
+      color: '',
       model: '',
     };
 
-    this.onSave = this.onSave.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
     this.onColorChange = this.onColorChange.bind(this);
   }
 
-  onSave() {
-    if(this.state.color && this.state.nr && this.state.model) {
+  componentDidMount(){
+    const userId = this.props.fb.auth().currentUser.uid;
+    this.props.fb.database().ref('/users/' + userId).once('value').then(function(data){
+      this.setState({
+        nr: data.val().nr,
+        color : data.val().color,
+        model : data.val().model,
+      })
+    }.bind(this)
+  )
+  }
+
+  onColorChange(color) {
+    console.log(color);
+    this.setState({
+      color: fromHsv(color),
+    });
+  }
+
+  onUpdate() {
+    if(this.state.color || this.state.nr || this.state.model) {
       const userId = this.props.fb.auth().currentUser.uid;
       this.props.fb.database().ref('users/' + userId).set({
         nr: this.state.nr,
@@ -40,13 +58,6 @@ export default class UserData extends Component {
               });
       });
     }
-  }
-
-  onColorChange(color) {
-    console.log(color);
-    this.setState({
-      color: fromHsv(color),
-    });
   }
 
   render() {
@@ -74,13 +85,14 @@ export default class UserData extends Component {
           <View style={{height: 140, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
               <View style={{height: 120, justifyContent: 'center', alignItems: 'center'}}>
                       <ColorPicker
+                        color={this.state.color}
                         onColorSelected={color => alert(`Color selected: ${color}`)}
                         onColorChange={this.onColorChange}
                         style={{flex: 1, height: 100, width: 150, justifyContent: 'center'}}
                     />
               </View>
           </View>
-          <Button iconLeft onPress={this.onSave} style={{backgroundColor: '#21294C'}} >
+          <Button iconLeft onPress={this.onUpdate} style={{backgroundColor: '#21294C'}} >
               <Icon name='checkmark' />
               <Text>Zapisz</Text>
             </Button>

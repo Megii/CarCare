@@ -18,13 +18,25 @@ export default class Login extends Component {
     super(props);
     this.state = {
       loading: false,
-      email: 'test2@test.pl',
-      pass: 'trudnehaslo',
+      email: 'test@test.pl',
+      pass: 'test123',
       content: null,
     };
 
     this.onLogin = this.onLogin.bind(this);
     this.onRegister = this.onRegister.bind(this);
+  }
+
+  componentDidMount(){
+    const menu = this.props.menu;
+
+    console.log(menu);
+
+    // menu.drawerLockMode = 'locked-close';
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.menu);
   }
 
   onLogin() {
