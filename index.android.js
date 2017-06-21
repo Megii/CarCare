@@ -14,12 +14,13 @@ import {
   Input,
   AsyncStorage,
   ToolbarAndroid,
-  Navigator,
   DrawerLayoutAndroid,
   Switch,
   TouchableHighlight,
   Text,
 } from 'react-native';
+
+import {Navigator} from 'react-native-deprecated-custom-components';
 
 import { Header,Container,Title, Form, Item, Label, Content, List, ListItem, InputGroup, Icon,  Picker, Button, Separator, Left, Right, } from 'native-base';
 
@@ -46,44 +47,47 @@ export default class Carcare extends Component {
       drawer: null,
       soundSwitch: false,
       vibrationSwitch: false,
+      autologinSwitch: false,
     };
 
     this.renderScene = this.renderScene.bind(this);
     this.initInstance = this.initInstance.bind(this);
-    this.changeScreen = this.changeScreen.bind(this);
+    this.autologinChange = this.autologinChange.bind(this);
   }
 
   initInstance(instance){
-
-        // console.log('dupa', instance);
-
         this.setState({drawer: instance});
-
-        // console.log(this.state);
-
-        //this.drawerInstance.instance = instance;
-
     }
 
-  changeScreen(nav){
+    autologinChange(value){
+      this.setState({autologinSwitch:value});
+      if(value ? AsyncStorage.setItem('autologin','1') : AsyncStorage.setItem('autologin','0'));
+    }
 
-  }
+    componentDidMount(){
+      let autologinValue = AsyncStorage.getItem('autologin');
+
+      if(autologinValue == '1'){
+        this.setState({autologinSwitch:true})
+      }
+    }
+
 
   renderScene(route, navigator) {
     console.log(this.state);
     switch(route.name) {
                          case 'updateUserData':
-                           return <UpdateUserData nav={navigator} menu={this.drawer} fb={firebaseApp} />;
+                           return <UpdateUserData nav={navigator} menu={this.state.drawer} fb={firebaseApp} />;
                            break;
                          case 'userData':
-                           return <UserData nav={navigator} menu={this.drawer} fb={firebaseApp} />;
+                           return <UserData nav={navigator} menu={this.state.drawer} fb={firebaseApp} />;
                            break;
                          case 'main':
-                           return <Main nav={navigator} menu={this.drawer} fb={firebaseApp} />;
+                           return <Main nav={navigator} menu={this.state.drawer} fb={firebaseApp} />;
                            break;
                          case 'login':
                          default:
-                           return <Login nav={navigator} menu={this.drawer} fb={firebaseApp} />;
+                           return <Login nav={navigator} menu={this.state.drawer} fb={firebaseApp} />;
                          }
   }
 
@@ -105,7 +109,7 @@ export default class Carcare extends Component {
               <Switch
                 onValueChange={(value) => this.setState({soundSwitch: value})}
                 style={{marginBottom: 10}}
-                value={this.state.falseSwitchIsOn} />
+                value={this.state.soundSwitch} />
               </Right>
             </ListItem>
             <ListItem style={{flex: 1, flexDirection:'row'}}>
@@ -113,14 +117,24 @@ export default class Carcare extends Component {
               <Right>
               <Switch
                onValueChange={(value) => this.setState({vibrationSwitch: value})}
-               value={this.state.trueSwitchIsOn} />
+               value={this.state.vibrationSwitch} />
+              </Right>
+            </ListItem>
+            <ListItem style={{flex: 1, flexDirection:'row'}}>
+              <Text style={{ color: '#fff' }}>Włącz autologowanie</Text>
+              <Right>
+              <Switch
+                onValueChange={(value) => this.autologinChange(value)}
+                style={{marginBottom: 10}}
+                value={this.state.autologinSwitch} />
               </Right>
             </ListItem>
 
             <ListItem>
-              <TouchableHighlight onPress={ () => this.navigator.push({
-                name: 'updateUserData',
-              })}>
+              <TouchableHighlight onPress={ () => {this.state.drawer.closeDrawer();
+                this.navigator.push({
+                name: 'updateUserData'
+              }); }}>
                 <Text style={{ color: '#fff' }}>Zmień dane</Text>
               </TouchableHighlight>
             </ListItem>
@@ -158,7 +172,6 @@ export default class Carcare extends Component {
         <DrawerLayoutAndroid
            ref={this.initInstance}
            drawerWidth={300}
-
            drawerPosition={DrawerLayoutAndroid.positions.Left}
            renderNavigationView={() => navigationView}>
            <Navigator

@@ -7,10 +7,10 @@ import {
   ActivityIndicator,
   AsyncStorage,
   Input,
+  Picker,
 } from 'react-native';
-import { ColorPicker, fromHsv, toHsv } from 'react-native-color-picker';
 
-import { Header,Container,Title, Form, Item, Label, Content, List, ListItem, Left, Right, Body, InputGroup, Icon, Text, Picker, Button } from 'native-base';
+import { Header,Container,Title, Form, Item, Label, Content, List, ListItem, Left, Right, Body, InputGroup, Icon, Text, Button } from 'native-base';
 
 export default class UpdateUserData extends Component {
   constructor(props) {
@@ -23,7 +23,6 @@ export default class UpdateUserData extends Component {
     };
 
     this.onUpdate = this.onUpdate.bind(this);
-    this.onColorChange = this.onColorChange.bind(this);
   }
 
   componentDidMount(){
@@ -38,12 +37,6 @@ export default class UpdateUserData extends Component {
   )
   }
 
-  onColorChange(color) {
-    console.log(color);
-    this.setState({
-      color: fromHsv(color),
-    });
-  }
 
   onUpdate() {
     if(this.state.color || this.state.nr || this.state.model) {
@@ -53,7 +46,7 @@ export default class UpdateUserData extends Component {
         color: this.state.color,
         model : this.state.model,
       }).then(() => {
-        this.props.nav.push({
+        this.props.nav.replace({
                 name: 'main',
               });
       });
@@ -82,16 +75,20 @@ export default class UpdateUserData extends Component {
             value={this.state.model}
           />
           <Text style={{color: '#fff'}}>Kolor:</Text>
-          <View style={{height: 140, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-              <View style={{height: 120, justifyContent: 'center', alignItems: 'center'}}>
-                      <ColorPicker
-                        color={this.state.color}
-                        onColorSelected={color => alert(`Color selected: ${color}`)}
-                        onColorChange={this.onColorChange}
-                        style={{flex: 1, height: 100, width: 150, justifyContent: 'center'}}
-                    />
-              </View>
-          </View>
+            <Picker 
+            selectedValue={this.state.color}
+            onValueChange={(value) => this.setState({color: value})}
+            style={styles.form}>
+              <Picker.Item label="Czerwony" value="#ff0000"/>
+              <Picker.Item label="Zielony" value="#00ff00"/>
+              <Picker.Item label="Niebieski" value="#0000ff"/>
+              <Picker.Item label="Czarny" value="#ffffff"/>
+              <Picker.Item label="Biały" value="#000000"/>
+              <Picker.Item label="Różowy" value="#ffc0cb"/>
+              <Picker.Item label="Szary" value="#808080"/>
+              <Picker.Item label="Żółty" value="#ffff00"/>
+
+            </Picker>
           <Button iconLeft onPress={this.onUpdate} style={{backgroundColor: '#21294C'}} >
               <Icon name='checkmark' />
               <Text>Zapisz</Text>
