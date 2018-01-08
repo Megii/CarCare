@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="@dimen/dialog_margin_top"
+    android:paddingBottom="@dimen/dialog_margin_bottom"
+    android:paddingLeft="@dimen/dialog_margin_horizontal"
+    android:paddingRight="@dimen/dialog_margin_horizontal"
+    >
+    
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dialog_nearby_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbarSize="@dimen/scroll_bar_size"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_nearby_list"
+        android:visibility="invisible"
+        />
+    <LinearLayout
+        android:id="@+id/dialog_nearby_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ProgressBar
+            android:id="@+id/dialog_nearby_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:layout_gravity="center_vertical"
+            />
+
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/dialog_nearby_info_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textPrimaryDarkBackground"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

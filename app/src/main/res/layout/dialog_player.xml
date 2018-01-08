@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/very_small_margin"
+    android:paddingLeft="@dimen/dialog_margin_horizontal"
+    android:paddingRight="@dimen/dialog_margin_horizontal"
+    android:paddingTop="@dimen/dialog_margin_top">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/dialog_player_user_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:textColor="@color/textPrimaryDarkBackground" />
+
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/dialog_player_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/textPrimaryDarkBackground" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_player_progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/small_margin">
+
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/dialog_player_progress_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:textColor="@color/textPrimaryDarkBackground"
+            />
+
+        <ProgressBar
+            android:id="@+id/dialog_player_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>-->
+    <com.drivecom.utils.RobotoMediumFontTextView
+        android:id="@+id/dialog_player_info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:textColor="@color/textPrimaryDarkBackground"
+        android:textSize="@dimen/medium_text_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/dialog_player_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small_margin"
+            android:ems="2"
+            android:gravity="right"
+            android:textColor="@color/textSecondaryDarkBackground"
+            android:visibility="visible"
+            tools:text="0:00" />
+
+        <ProgressBar
+            android:id="@+id/dialog_player_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/dialog_player_length_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:ems="2"
+            android:textColor="@color/textSecondaryDarkBackground"
+            android:visibility="visible"
+            tools:text="0:20" />
+    </LinearLayout>
+
+</LinearLayout>

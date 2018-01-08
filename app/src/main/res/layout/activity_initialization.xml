@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/initialization_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        tools:context="com.drivecom.initialization.InitializationActivity">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/initialization_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/initialization_registration_layout"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:paddingTop="56dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_logo_dark_background"
+
+            />
+
+        <include
+            android:id="@+id/initialization_login_layout"
+            layout="@layout/layout_intro_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            />
+
+        <include
+            android:id="@+id/initialization_registration_layout"
+            layout="@layout/layout_intro_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/initialization_progress_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/initialization_activity_progress_layout_bottom_margin"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/initialization_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/normal_margin" />
+
+            <com.drivecom.utils.RobotoMediumFontTextView
+                android:id="@+id/initialization_progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/textPrimaryDarkBackground" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+

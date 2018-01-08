@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nearby_item_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/very_small_margin"
+    android:layout_marginLeft="@dimen/very_small_margin"
+    android:layout_marginRight="@dimen/very_small_margin"
+    android:layout_marginTop="@dimen/very_small_margin"
+    app:cardBackgroundColor="@color/cardview_dark_background"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:padding="@dimen/normal_margin"
+        >
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/nearby_item_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:text="Użytkownik 1"
+            android:textSize="@dimen/big_text_size"
+            android:textColor="@color/textPrimaryDarkBackground"
+            />
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/nearby_item_registration_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/textSecondaryDarkBackground"
+            android:textSize="@dimen/normal_margin"
+            android:text="sdsdsdsd"
+            />
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

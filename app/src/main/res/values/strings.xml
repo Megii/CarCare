@@ -1,0 +1,180 @@
+<resources>
+    <string name="app_name">Drivecom</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="login_button_label">Zaloguj się</string>
+    <string name="register_button_login">Zarejestruj się</string>
+    <string name="logging_button_label">Logowanie</string>
+    <string name="registering_button_label">Rejestracja</string>
+    <string name="user_name">Nazwa użytkownika</string>
+    <string name="registration_number">Tablica rejestracyjna</string>
+    <string name="e_mail_address">Adres e-mail</string>
+    <string name="password">Hasło</string>
+    <string name="password_confirm">Powtórz hasło</string>
+    <string name="password_confirm_error_message">Hasło niezgodne!</string>
+
+    <string name="progress_login_message">Trwa logowanie...</string>
+    <string name="progress_register_message">Trwa rejestracja...</string>
+    <string name="progress_error_message">Nastąpił błąd!</string>
+    <string name="progress_login_success_message">Logowanie zakończono sukcesem.</string>
+    <string name="progress_login_bad_credentials_message">Nieprawidłowa nazwa użytkownika lub hasło.</string>
+    <string name="progress_register_success_message">Rejestracja zakończona sukcesem.</string>
+    <string name="progress_register_bad_email_message">Nieprawidłowy adres e-mail.</string>
+    <string name="progress_register_weak_password_message">Podane hasło jest zbyt mało zróżnicowane.</string>
+    <string name="progress_register_user_in_use_message">Użytkownik o podanym adresie e-mail został już zarejestrowany.</string>
+
+    <string name="about_us">O nas</string>
+    <string name="terms_of_use">Regulamin</string>
+    <string name="log_out">Wyloguj</string>
+
+    <string name="nearby">W pobliżu</string>
+    <string name="group">Grupa</string>
+    <string name="notifications">Notyfikacje</string>
+
+    <string name="menu_add_group">Utwórz grupę</string>
+    <string name="menu_delete_group">Usuń grupę</string>
+    <string name="menu_leave_group">Opuść grupę</string>
+
+    <string name="enter_group_name">Nazwa grupy</string>
+
+    <string name="notifications_empty_message">Brak powiadomień.</string>
+
+
+    <string name="nearby_list_empty_message">Brak użytkowników w pobliżu.</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_invite">ZAPROŚ</string>
+    <string name="dialog_cancel">ANULUJ</string>
+    <string name="dialog_send">WYSLIJ</string>
+    <string name="dialog_try_again">PONÓW</string>
+    <string name="dialog_exit">Wyjdź</string>
+
+    <string name="dialog_nearby_list_title">Nazwa grupy</string>
+    <string name="dialog_create_group_title">Utwórz grupę</string>
+    <string name="dialog_create_group_positive_button">UTWÓRZ</string>
+
+    <string name="dialog_leave_group_title">Opuść grupę</string>
+    <string name="dialog_leave_group_question_message">Czy na pewno chcesz opuścić grupę?</string>
+    <string name="dialog_leave_group_progress_message">Opuszczanie grupy...</string>
+    <string name="dialog_leave_group_positive_button">OPUŚĆ</string>
+
+    <string name="dialog_delete_group_title">Usuń grupę</string>
+    <string name="dialog_delete_group_question_message">Czy na pewno chcesz usunąć grupę?</string>
+    <string name="dialog_delete_group_progress_message">Usuwanie grupy...</string>
+    <string name="dialog_delete_group_positive_button">USUŃ</string>
+
+    <string name="dialog_message_title">Wiadomość</string>
+    <string name="dialog_recording_progress_message">Wysyłanie nagrania</string>
+    <string name="dialog_player_progress_message">Wczytywanie nagrania</string>
+
+    <string name="dialog_account_data_title">Dane użytkownika</string>
+    <string name="dialog_account_data_progress_message">Wysyłanie zmian...</string>
+    <string name="dialog_account_data_positive_button">ZAPISZ</string>
+
+    <string name="dialog_invitation_title">Zaproszenie</string>
+    <string name="dialog_invitation_question_message">Czy chcesz dołączyć do grupy</string>
+    <string name="dialog_invitation_accept_progress_message">Dołączanie do grupy...</string>
+    <string name="dialog_invitation_reject_progress_message">Odrzucanie zaproszenia...</string>
+    <string name="dialog_invitation_positive_button">DOŁĄCZ</string>
+    <string name="dialog_invitation_neutral_button">ODRZUĆ</string>
+
+    <string name="dialog_group_user_status_send_invitation_message">Czy chcesz ponownie wysłać zaproszenie?</string>
+    <string name="dialog_group_user_status_progress_message">Wysyłanie zaproszenia...</string>
+
+    <string name="dialog_simple_loading">Wczytywanie…</string>
+
+    <string name="permissions_denied_dialog_title">Brak pozwoleń</string>
+    <string name="gps_denied_dialog_content">Do działania aplikacji konieczne jest pobieranie informacji o lokalizacji urządzenia. Udziel pozwolenia na wykorzystanie modułu GPS\n(<b>ustawienia -> zezwolenia</b>)</string>
+    <string name="microphone_denied_dialog_content">Do nagrywania wiadomości konieczne jest wykorzystanie mikrofonu. Udziel pozwolenia na jego wykorzystanie\n(<b>ustawienia -> zezwolenia</b>)</string>
+    <string name="permissions_denied_dialog_positive_button">USTAWIENIA</string>
+
+    <string name="nearby_list_downloading">Oczekiwanie na użytkowników w pobliżu...</string>
+    <string name="empty_nearby_list">Brak użytkowników w poblizu.</string>
+    <string name="invitations_sending">Wysyłanie zaproszeń...</string>
+
+    <string name="sending_error">Błąd wysyłania danych</string>
+    <string name="download_error">Błąd pobierania danych.</string>
+    <string name="error">Błąd.</string>
+    <string name="network_error">Brak połączenia internetowego.</string>
+    <string name="recorder_error">Błąd nagrywania.</string>
+    <string name="player_error">Błąd odtwarzania.</string>
+
+    <string name="group_created_message">Grupa została utworzona.</string>
+    <string name="group_joined_message">Dołączono do grupy.</string>
+    <string name="group_left_message">Opuszczono grupę.</string>
+    <string name="group_delete_message">Usunięto grupę.</string>
+    <string name="group_has_been_deleted">Grupa została zamknięta.</string>
+    <string name="users_number_too_big">Przekroczono maksymalną liczbę członków grupy.</string>
+    <string name="users_number_empty">Wybierz przynajmniej jednego członka grupy.</string>
+    <string name="recording_send_message">Nagranie zostało wysłane.</string>
+
+    <string name="group_user_active_status">Użytkownik jest dostępny.</string>
+    <string name="group_user_waiting_status">Oczekiwanie na przyjęcie zaproszenia przez użytkownika.</string>
+    <string name="group_user_invitation_rejected_status">Użytkownik odrzucił zaproszenie.</string>
+    <string name="group_user_left">Użytkownik opuścił grupę.</string>
+    <string name="group_already_deleted">Grupa do której należałeś została usunięta.</string>
+
+    <string name="message_recording_no_active_users_message">Brak aktywnych użytkowników.</string>
+
+    <string name="about_us_text">W 2017 roku grupa studentów na Wydziale Matematyki i Informatyki Uniwersytetu im. Adama Mickiewicza w Poznaniu w ramach projektu inżynierskiego zaczęła tworzyć aplikację mobilną działająca na systemie Android. Przez rok była ona udoskonalana i testowana tak, aby zapewnić jak najwyższą jakość dla potencjalnych klientów. Dzięki zastosowaniu geolokalizacji oraz dodatkowych zabezpieczeń aplikacja zapewnia bezpieczną komunikację pomiędzy użytkownikami.</string>
+
+    <string name="terms_of_use_header_1">1. POSTANOWIENIA OGÓLNE</string>
+    <string name="terms_of_use_header_2">2. WYMAGANIA TECHNICZNE I ZASADY DOSTĘPU</string>
+    <string name="terms_of_use_header_3">3. OGÓLNE ZASADY KORZYSTANIA Z APLIKACJI</string>
+    <string name="terms_of_use_header_4">4. ODPOWIEDZIALNOŚĆ OPERATORA</string>
+    <string name="terms_of_use_header_5">5. ZAKOŃCZENIE KORZYSTANIA Z APLIKACJI</string>
+    <string name="terms_of_use_header_6">6. POLITYKA PRYWATNOŚCI</string>
+    <string name="terms_of_use_header_7">7. REKLAMACJE</string>
+    <string name="terms_of_use_header_8">8. ZMIANA I DOSTĘP DO REGULAMINU</string>
+    <string name="terms_of_use_header_9">9. POSTANOWIENIA KOŃCOWE</string>
+
+    <string name="terms_of_use_text_1">Niniejszy regulamin (dalej: „Regulamin”) określa zasady korzystania z aplikacji mobilnej Drivecom przeznaczonej na urządzenia mobilne z systemem operacyjnym  Android(dalej: „Aplikacja”).
+        Regulamin o którym mowa w punkcie powyżej jest regulaminem w rozumieniu art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j. Dz. U. z 2013 r., poz. 1422).
+        Właścicielem i Operatorem Aplikacji, a także usługodawcą świadczonych za jej pośrednictwem usług są twórcy projektu Drivecom.
+        Usługi świadczone za pośrednictwem Aplikacji polegają w szczególności na:
+        wymianie informacji drogowej pomiędzy użytkownikami Aplikacji,
+        informowaniu o produktach i usługach podmiotów trzecich,
+        Koszty transmisji danych wymaganych do pobrania, instalacji, uruchomienia i korzystania z Aplikacji pokrywają jej użytkownicy we własnym zakresie na podstawie umów zawartych z Operatorami telekomunikacyjnymi lub innym dostawcą Internetu. Operator nie ponosi odpowiedzialności za wysokość opłat naliczanych z tytułu wykorzystania transmisji danych niezbędnego do korzystania z Aplikacji. Operator zaleca użytkownikom Aplikacji korzystanie z aplikacji lub funkcji systemu operacyjnego polegających na pomiarze przesyłanych danych.
+        Aplikacja oraz wszelkie zawarte w niej materiały i informacje, , wybór i układ prezentowych w ramach Aplikacji treści, logotypy, elementy graficzne, znaki towarowe, stanowią przedmiot praw wyłącznych Operatora lub jego partnerów biznesowych.</string>
+    <string name="terms_of_use_text_2">Aplikacja dostępna jest dla wszystkich użytkowników urządzeń mobilnych spełniających wskazane poniżej wymagania techniczne, którzy pobiorą ją bezpośrednio od twórców oprogramowania i prawidłowo uruchomią na urządzeniu mobilnym.
+        Urządzenie, na którym ma zostać uruchomiona aplikacja, spełniać musi następujące wymagania techniczne dotyczące systemu operacyjnego:
+        urządzenie z systemem Android w wersji minimum 4.0,
+        Pobranie i zainstalowanie Aplikacji z innych źródeł niż te wskazane w punkcie powyżej, stanowi naruszenie Regulaminu. Powyższe nie dotyczy urządzeń mobilnych, na których aplikacja preinstalowana była fabrycznie a Operator wyraził na to zgodę.
+        Do uruchomienia i prawidłowego działania Aplikacji niezbędne jest aktywowanie następujących funkcji urządzenia:
+        aktywne połączenie internetowe,
+        aktywną usługę GPS.
+        Przy pierwszym uruchomieniu Aplikacji użytkownik musi podać unikalny id (nazwa użytkownika), pod którym będzie w niej występował. Każdy użytkownik może jednocześnie korzystać z jednego nicku.</string>
+    <string name="terms_of_use_text_3">Użytkownicy są zobowiązani do korzystania z Aplikacji w sposób zgodny z obowiązującym prawem, Regulaminem, a także z zasadami współżycia społecznego, w tym ogólnymi zasadami korzystania z sieci Internet i aplikacji mobilnych.
+Użytkownicy są zobowiązani w szczególności do:
+korzystania z Aplikacji w sposób niezakłócający jej funkcjonowania,
+korzystania z Aplikacji w sposób nieuciążliwy dla innych użytkowników oraz Operatora, z poszanowaniem dóbr osobistych osób trzecich (w tym prawa do prywatności) i wszelkich innych przysługującym im praw,
+korzystania z wszelkich informacji i materiałów udostępnionych za pośrednictwem Aplikacji jedynie w zakresie dozwolonego użytku.
+Użytkownicy są zobowiązani niezwłocznie powiadomić Operatora o każdym przypadku naruszenia ich praw w związku z korzystaniem z Aplikacji.</string>
+
+    <string name="terms_of_use_text_4">Operator prowadzi bieżący nadzór nad technicznym funkcjonowaniem Aplikacji, zapewniając poprawność jej działania. Operator nie gwarantuje jednak stałej dostępności wszystkich funkcjonalności Aplikacji, jak również ich bezbłędnego działania.
+Użytkownik korzysta z Aplikacji dobrowolnie, na własną odpowiedzialność – w tym m.in. Operator nie ponosi odpowiedzialności za:
+szkody, utracone korzyści będące skutkiem naruszania przez użytkowników praw osób trzecich,
+szkody, utracone korzyści powstałe w następstwie zakłóceń dostępności wszystkich lub poszczególnych funkcjonalności Aplikacji;
+usługi, aplikacje i serwisy internetowe, których dostawcą są osoby trzecie.
+Operator nie ponosi odpowiedzialności za ograniczenia lub problemy techniczne w systemach teleinformatycznych, z których korzystają urządzenia mobilne użytkowników, a które uniemożliwiają lub ograniczają użytkownikom korzystanie z Aplikacji i oferowanych za jej pośrednictwem usług.</string>
+    <string name="terms_of_use_text_5">Użytkownicy mogą w dowolnym czasie zaprzestać korzystania z Aplikacji, w szczególności wówczas, gdy nie zaakceptują zmian wprowadzonych w niniejszym Regulaminie, Polityce Prywatności lub modyfikacji Aplikacji. Zaprzestanie korzystania z Aplikacji wymaga jej usunięcia z urządzenia mobilnego.
+W przypadku stwierdzenia, że użytkownik dopuszcza się działań zabronionych prawem lub Regulaminem, albo naruszających zasady współżycia społecznego lub godzących w usprawiedliwiony interes Operatora a w szczególności ich dobre imię, Operator może podjąć wszelkie prawem dozwolone działania, w tym ograniczyć możliwość korzystania przez użytkownika z Aplikacji i świadczonych za jej pośrednictwem usług.
+Operator zastrzega sobie prawo zawieszenia, w dowolnym czasie i z dowolnych przyczyn działalności Aplikacji, a także prawo zmiany, wycofania lub dodania nowych usług świadczonych za jej pośrednictwem.</string>
+    <string name="terms_of_use_text_6">Administratorem danych osobowych w rozumieniu ustawy o ochronie danych osobowych jest zespół Drivecom.
+Drivecom dba o bezpieczeństwo udostępnianych nam danych osobowych, w szczególności przed dostępem osób nieupoważnionych.
+Drivecom zapewnia wszystkim zarejestrowanym Użytkownikom realizację uprawnień wynikających z ustawy z dnia 29 sierpnia 1997 r. o ochronie danych osobowych (Dz.U. z 2014 r. poz. 1182), w szczególności prawo wglądu do własnych danych osobowych, prawo żądania aktualizacji i usunięcia danych osobowych oraz prawo wniesienia sprzeciwu w przypadkach określonych w przepisach tej ustawy.
+Dane osobowe zbierane są przez  twórców projektu Drivecom, w celu umożliwienia użytkownikom korzystanie z aplikacji mobilnej. Dane te mogą ponadto służyć do weryfikacji, czy osoba rejestrująca spełnia wymagane przez Regulamin i przepisy prawne warunki.
+Podanie danych osobowych jest dobrowolne, jednak ich brak uniemożliwia skorzystanie z aplikacji mobilnej Drivecom.
+Aplikacja Drivecom korzysta z Google Analytics, aby śledzić anonimowe dane dotyczące korzystania z aplikacji.</string>
+    <string name="terms_of_use_text_7">Wszelkie reklamacje związane z działalnością Aplikacji oraz ze świadczeniem za jej pośrednictwem usług, a także pytania dotyczące korzystania z Aplikacji należy kierować do Operatora na adres poczty elektronicznej bok@yanosik.pl
+Reklamacja powinna zawierać w swej treści: nazwę i model urządzenia mobilnego, aktualną wersję systemu teleinformatycznego zainstalowanego na urządzeniu, dokładny opis i powód reklamacji. Ponadto reklamacja może zawierać nick użytkownika.
+W terminie 14 dni roboczych od dnia jej otrzymania Operator rozpatruje reklamację oraz informuje użytkownika, za pomocą poczty elektronicznej, o sposobie jej rozpatrzenia. W sytuacji, gdy podane w reklamacji dane lub informacje wymagają uzupełnienia Operator zwraca się, przed rozpatrzeniem reklamacji, do użytkownika o jej uzupełnienie. Czas udzielania dodatkowych wyjaśnień przez użytkownika przedłuża okres rozpatrywania reklamacji.</string>
+    <string name="terms_of_use_text_8">Operator ma prawo do zmiany Regulaminu w dowolnym czasie. Zmiany Regulaminu obowiązują od momentu umieszczenia w Aplikacji. Zmiany uważane są za zaakceptowane przez użytkownika z momentem skorzystania przez niego z Aplikacji.
+Operator zapewnia dostęp do Regulaminu za pośrednictwem odsyłacza zamieszczonego na stronie internetowej www.yanosik.pl lub jej podstronach oraz bezpośrednio w aplikacji.</string>
+    <string name="terms_of_use_text_9">W sprawach nieuregulowanych niniejszym Regulaminem zastosowanie mają odpowiednie przepisy prawa polskiego, a w szczególności Kodeksu Cywilnego, Ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną.
+Regulamin obowiązuje od dnia 30 listopada 2017 roku.</string>
+</resources>

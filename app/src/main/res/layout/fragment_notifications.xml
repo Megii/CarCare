@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_notifications_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <com.drivecom.utils.RobotoMediumFontTextView
+                    android:id="@+id/fragment_notifications_invitations_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/small_margin"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:paddingRight="@dimen/normal_margin"
+                    android:paddingTop="@dimen/normal_margin"
+                    android:text="Zaproszenia do grup"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:textColor="@color/textSecondaryDarkBackground"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <ListView
+                    android:id="@+id/fragment_notifications_invitations_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    tools:listitem="@layout/item_notifications_invitation" />
+
+                <View
+                    android:id="@+id/fragment_notifications_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:background="@color/dividerDarkBackground" />
+
+                <com.drivecom.utils.RobotoMediumFontTextView
+                    android:id="@+id/fragment_notifications_messages_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/small_margin"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:paddingRight="@dimen/normal_margin"
+                    android:paddingTop="@dimen/normal_margin"
+                    android:text="Wiadomości"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:textColor="@color/textSecondaryDarkBackground"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <ListView
+                    android:id="@+id/fragment_notifications_messages_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    tools:listitem="@layout/item_notifications_messages" />
+            </LinearLayout>
+        </ScrollView>
+        <com.drivecom.utils.RobotoMediumFontTextView
+            android:id="@+id/fragment_notifications_empty_message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/textPrimaryDarkBackground"
+            android:text="@string/notifications_empty_message"
+            />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

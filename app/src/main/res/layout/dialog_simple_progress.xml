@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="@dimen/dialog_margin_bottom"
+    android:paddingLeft="@dimen/dialog_margin_horizontal"
+    android:paddingRight="@dimen/dialog_margin_horizontal"
+    android:paddingTop="@dimen/dialog_margin_top">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/normal_margin" />
+
+    <com.drivecom.utils.RobotoMediumFontTextView
+        android:id="@+id/dialog_simple_progress_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        tools:text="Progress..."
+        android:textColor="@color/textPrimaryDarkBackground" />
+</LinearLayout>
